@@ -1,0 +1,22 @@
+<%- include('../public/partials/header.ejs') %>
+
+<div class="create-blog-container">
+  <h1>Create a New Blog Post</h1>
+  <form action="/create" method="POST" class="create-form">
+    <div class="form-group">
+      <label for="blogTitle">Title:</label>
+      <input type="text" id="blogTitle" name="blogTitle" placeholder="Enter the blog title" required>
+    </div>
+    <div class="form-group">
+      <label for="blogDes">Description:</label>
+      <textarea id="blogDes" name="blogDes" rows="5" placeholder="Write the blog content" required></textarea>
+    </div>
+    <div class="form-group">
+      <label for="blogAut">Author:</label>
+      <input type="text" id="blogAut" name="blogAut" placeholder="Enter your name" required>
+    </div>
+    <button type="submit" class="submit-button">Create Post</button>
+  </form>
+</div>
+
+<%- include('../public/partials/footer.ejs') %>

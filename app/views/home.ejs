@@ -1,0 +1,28 @@
+<%- include('../public/partials/header.ejs') %>
+
+<div class="blog-list-container">
+  <% if (blogList.length < 1) { %>
+    <div class="no-blogs">
+      <h1>You don't have any blogs yet. Please create one!</h1>
+    </div>
+  <% } else { %>
+    <h1>Your Blog Posts</h1>
+    <div class="blog-list">
+      <% blogList.forEach((blog, index) => { %>
+        <div class="blog-post">
+          <h2><%= blog.title %></h2>
+          <p><%= blog.description.slice(0, 150) %>...</p>
+          <div class="blog-actions">
+            <a href="/blogDetails/<%= blog.id %>" class="view-link">View Full Post</a>
+            <a href="/edit/<%= blog.id %>" class="edit-link">Edit</a>
+            <form action="/delete/<%= blog.id %>" method="post" class="delete-form">
+              <button class="delete-button">Delete</button>
+            </form>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  <% } %>
+</div>
+
+<%- include('../public/partials/footer.ejs') %>

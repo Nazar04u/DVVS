@@ -1,0 +1,22 @@
+<%- include('../public/partials/header.ejs') %>
+
+<div class="edit-blog-container">
+  <h1>Edit Blog Post</h1>
+  <form action="/edit/<%= blogDetails.id %>" method="POST" class="edit-form">
+    <div class="form-group">
+      <label for="blogTitle">Title:</label>
+      <input type="text" id="blogTitle" name="blogTitle" placeholder="Enter the blog title" value="<%= blogDetails.title %>" required>
+    </div>
+    <div class="form-group">
+      <label for="blogDes">Description:</label>
+      <textarea id="blogDes" name="blogDes" rows="5" placeholder="Write the blog content" required><%= blogDetails.description %></textarea>
+    </div>
+    <div class="form-group">
+      <label for="blogAut">Author:</label>
+      <input type="text" id="blogAut" name="blogAut" placeholder="Author" value="<%= blogDetails.author %>" required>
+    </div>
+    <button type="submit" class="submit-button">Save Changes</button>
+  </form>
+</div>
+
+<%- include('../public/partials/footer.ejs') %>
