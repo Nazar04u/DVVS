@@ -15,12 +15,8 @@ CREATE TABLE posts (
     description TEXT NOT NULL,
     author VARCHAR(100) NOT NULL
 );
-After you should create .env file and define your credentials. The next is as example
-USER=postgres(default user)
-HOST=localhost(default value)
-NAME=your_DB_Name
-PASSWORD=your password
-PORT=5432(default port)
+After you should create .env file and define your credentials.
+Which contains in DB_URL. See details here https://www.postgresql.org/docs/6.4/jdbc19100.htm
 
 After you did that you should be able to run
 npm start.
