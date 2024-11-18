@@ -11,18 +11,19 @@ const app = express();
 const port = 3001;
 const { Pool } = pkg;
 
+// Configure PostgreSQL connection
 const pool = new Pool({
-  user: process.env.USER,
-  host: process.env.HOST,
-  database: process.env.NAME,
-  password: process.env.PASSWORD,
-  port: process.env.PORT
+  connectionString: process.env.DB_URL, // Use the DB_URL environment variable
+  ssl: {
+    require: true, // Ensure SSL is required
+    rejectUnauthorized: false, // Disable strict SSL certificate checks for managed DBs
+  },
 });
 
-// Test the database connection
+// Test the connection
 pool.connect()
-  .then(() => console.log('Connected to PostgreSQL'))
-  .catch((err) => console.error('Database connection error', err));
+  .then(() => console.log("Connected to PostgreSQL"))
+  .catch((err) => console.error("Database connection error", err.stack));
 
 
 // Set up path constants
@@ -149,5 +150,5 @@ app.post("/delete/:id", async (req, res) => {
 
 // Start the server
 app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+  console.log(`Server is currently running on port ${port}`);
 });
